@@ -1,46 +1,50 @@
 
 
-#function for player X's move
-#need to review indents, do not seem to understand yet (many unindent errors)
-def yourmove(board):
-  row = raw_input("Which row would you like to choose? TOP, MIDDLE, or BOTTOM? ")
-  col = raw_input("Which column do you choose? LEFT, CENTER, or RIGHT? ")
-	if row == "TOP":
-	  row == 0
-	elif row == "MIDDLE":
-	  row == 1
-	elif row == "BOTTOM":
-	  row == 2
-	else:
-		row = "ERROR. Please indicate TOP, MIDDLE, or BOTTOM row"
-#column    
-	if col == "LEFT":
-	  col == 0
-	elif col == "CENTER":
-	  col == 1
-	elif col == "RIGHT":
-	  col == 2
-	else: 
-	  col == "ERROR. Please indicate LEFT, CENTER, OR RIGHT column"  
+import numpy as np
+board = [ [()]*3 for i in range(3) ]
+row = 0
+col = 0
+comprow = 0
+compcol = 0
 
+
+#WHY DO I KEEP GETTING INDENT ERRORS!!!
+def yourmove(row, col): #keep figuring out defining parameters for function, flow of execution, at what point do variables need to be defined
+  x = raw_input("Which row would you like to choose? TOP, MIDDLE, or BOTTOM? ")
+  y = raw_input("Which column do you choose? LEFT, CENTER, or RIGHT? ")
+
+  if x == "TOP":
+ 		row += 0
+  elif x == "MIDDLE":
+ 		row += 1
+  elif x == "BOTTOM":
+ 		row += 2
+  elif y == "LEFT":
+    col += 0
+  elif y == "CENTER":
+    col += 1
+  elif y == "RIGHT":
+    col += 2
   
-board[row][col] = 'X'
+  board[row][col] = 'X'
+
+
+def compmove(comprow,compcol):
+  comprow += np.random.randint(3)
+  compcol += np.random.randint(3)#should I change variable names in this function or keep row/cow
+  for i in range(len(board)):
+    if board[comprow][compcol] != ('X' or 'O'):#range len for nested list
+      board[comprow][compcol] = 'O'
+  return board
+
+
+
+
+
+
+
+yourmove(row, col)
+compmove(comprow, compcol)
 print board
 
-def compturn(n):
-  row = np.random.randint(3)
-  col = np.random.randint(3)#should I change variable names in this function or keep row/cow
-  board[row][col] = 'O'
-  print board
 
-def main():
-  import numpy as np
-  board = [ [()]*3 for i in range(3) ]
-  print board
-print "I challenge you to a game of TIC TAC TOE"
-print "You are player X: Your move first!"
-
-yourmove(board)
-compturn(board)
-
-main()
