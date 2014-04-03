@@ -1,50 +1,64 @@
-
-
 import numpy as np
-board = [ [()]*3 for i in range(3) ]
-row = 0
-col = 0
-comprow = 0
-compcol = 0
+board={}
+for int in range(9):
+    board.update({int:int})
 
 
-#WHY DO I KEEP GETTING INDENT ERRORS!!!
-def yourmove(row, col): #keep figuring out defining parameters for function, flow of execution, at what point do variables need to be defined
-  x = raw_input("Which row would you like to choose? TOP, MIDDLE, or BOTTOM? ")
-  y = raw_input("Which column do you choose? LEFT, CENTER, or RIGHT? ")
+xtaken = []#use x and otaken to confirm a win
+otaken =[]
+taken = []
 
-  if x == "TOP":
- 		row += 0
-  elif x == "MIDDLE":
- 		row += 1
-  elif x == "BOTTOM":
- 		row += 2
-  elif y == "LEFT":
-    col += 0
-  elif y == "CENTER":
-    col += 1
-  elif y == "RIGHT":
-    col += 2
-  
-  board[row][col] = 'X'
+def viewboard():
+		view = board.values()
+		for i in xrange(0,len(view),3):
+				print view[i:i+3]
 
 
-def compmove(comprow,compcol):
-  comprow += np.random.randint(3)
-  compcol += np.random.randint(3)#should I change variable names in this function or keep row/cow
-  for i in range(len(board)):
-    if board[comprow][compcol] != ('X' or 'O'):#range len for nested list
-      board[comprow][compcol] = 'O'
-  return board
+def xmove():
+    row = raw_input("Pick a row: ")
+		col = raw_input("Pick a col: ")
+		if row == "Top"
+				x = 0
+		elif row == "Middle":
+				x = 3
+		elif row == "Bottom":
+				x = 6
+
+		if col == "Left":
+				x += 0
+		elif col == "Center":
+				x += 1
+		elif col == "Right":
+				x += 2
+    if x not in taken:
+        board.update({x:'X'})
+        xtaken.append(x)
+        taken.append(x)
+        print board
+    else:
+				x = np.random.randint
 
 
+def compmove():
+    pos = np.random.randint(8)
+    if pos not in taken:
+        board.update({pos:'O'})
+        otaken.append(pos)
+        taken.append(pos)
+        print board
+    else:#how do we make it go back through random integer loop if already in take? call function again until integer that works?
+        pos = np.random.randint(8)
 
+count = 0
+while count < 11:
+    xmove()
+    compmove()
 
+    viewboard()
+    print otaken
+    print xtaken
+    count += 1
 
+#board formating (turn to its won function to use after each turn
 
-
-yourmove(row, col)
-compmove(comprow, compcol)
-print board
-
-
+    
