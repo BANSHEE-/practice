@@ -1,7 +1,7 @@
 import numpy as np
 board={}
 for int in range(9):
-    board.update({int:int})
+    board.update({int:'_'})
 
 
 xtaken = []#use x and otaken to confirm a win
@@ -9,34 +9,35 @@ otaken =[]
 taken = []
 
 def viewboard():
-		view = board.values()
-		for i in xrange(0,len(view),3):
-				print view[i:i+3]
+	view = board.values()
+	for i in xrange(0,len(view),3):
+		print view[i:i+3]
 
 
 def xmove():
-    row = raw_input("Pick a row: ")
-		col = raw_input("Pick a col: ")
-		if row == "Top"
-				x = 0
-		elif row == "Middle":
-				x = 3
-		elif row == "Bottom":
-				x = 6
+	row = raw_input("Pick a row: ")
+	col = raw_input("Pick a col: ")
+	if row == "Top":
+		x = 0
+	elif row == "Middle":
+		x = 3
+	elif row == "Bottom":
+		x = 6
 
-		if col == "Left":
-				x += 0
-		elif col == "Center":
-				x += 1
-		elif col == "Right":
-				x += 2
-    if x not in taken:
-        board.update({x:'X'})
-        xtaken.append(x)
-        taken.append(x)
-        print board
-    else:
-				x = np.random.randint
+	if col == "Left":
+		x += 0
+	elif col == "Center":
+		x += 1
+	elif col == "Right":
+		x += 2
+	
+	if x not in taken:
+		board.update({x:'X'})
+		xtaken.append(x)
+		taken.append(x)
+		print board
+	else:
+		x = np.random.randint
 
 
 def compmove():
@@ -50,7 +51,7 @@ def compmove():
         pos = np.random.randint(8)
 
 count = 0
-while count < 11:
+while count < 10:
     xmove()
     compmove()
 
@@ -60,5 +61,3 @@ while count < 11:
     count += 1
 
 #board formating (turn to its won function to use after each turn
-
-    
