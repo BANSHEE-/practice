@@ -42,7 +42,7 @@ def xmove():
 
 
 #after two move comp stops working HELP
-def compwrite(pos):#does this argument need to be here?
+def compwrite():#does this argument need to be here?
 		board.update({pos:'O'})
 		otaken.append(pos)
 		taken.append(pos)
