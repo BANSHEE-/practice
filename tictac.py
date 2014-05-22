@@ -40,13 +40,19 @@ def xmove():
 		x = np.random.randint
 
 
+
+#after two move comp stops working HELP
+def compwrite(pos):#does this argument need to be here?
+		board.update({pos:'O'})
+		otaken.append(pos)
+		taken.append(pos)
+		print board
+
 def compmove():
     pos = np.random.randint(8)
     if pos not in taken:
-        board.update({pos:'O'})
-        otaken.append(pos)
-        taken.append(pos)
-        print board
+				compwrite(pos)
+				print board
     else:#how do we make it go back through random integer loop if already in take? call function again until integer that works?
         pos = np.random.randint(8)
 
